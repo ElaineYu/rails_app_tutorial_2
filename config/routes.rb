@@ -15,12 +15,13 @@ LearnRails2::Application.routes.draw do
   ## define a custom url and tell it where to go
   ## in this case, the new method in the users controller
   resources :users
-  match '/signup' => 'users#new'
+  get '/signup' => 'users#new'
 
   #Sessions
   ## :as gives us the ability to access this url in forms or links
   ## by saying login_path or login_url as opposed to explicityl
-  get     '/login'  => 'sessions#new': :as => login
+  get     '/home'   => 'welcome#index'
+  get     '/login'  => 'sessions#new' #, :as => login
   post    '/login'  => 'sessions#create'
   delete  '/logout' => 'sessions#destroy', :via => :delete
 
